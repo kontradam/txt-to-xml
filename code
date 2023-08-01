@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 
-np_stock_values = []
+np_values = []
 files_path = r"C:\...\file.txt" // add your file path input
 read_files = glob.glob(os.path.join(files_path,"*.txt"))
 header_names = []
