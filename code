@@ -4,7 +4,7 @@ import pandas as pd
 
 
 np_stock_values = []
-files_path = r"D:\Markovitz\wse stocks"
+files_path = r"C:\...\file.txt" // add your file path input
 read_files = glob.glob(os.path.join(files_path,"*.txt"))
 header_names = []
 l=os.listdir(files_path)
@@ -17,15 +17,15 @@ for files in read_files:
     dat = pd.read_fwf(files, header=None, names=header_names)
     dat2 = dat.loc[0:-1]
     df3 = df2.loc[::-1].reset_index(drop=True)
-    df4 = df3.loc[0:251]
+    df4 = df3.loc[0:251]        // set data from 0 to infinity
     df5 = df4.loc[::-1].reset_index(drop=True)
-    np_stock_values.append(df5)
-    cdf = pd.concat(np_stock_values,axis=1)
+    np_values.append(df5)
+    cdf = pd.concat(np_values,axis=1) // if data is not transposed, you can delete this line
 
 for files in read_files:
     dat = pd.read_fwf(files, header = None,names=header_names)
     dat2 = dat.loc[0:-1]
-    writer = pd.ExcelWriter(r'D:\Markovitz\Mark\main.xlsx')
+    writer = pd.ExcelWriter(r'C:\...\main.xlsx') // add your file path output
     cdf.to_excel(writer)
     dat2.to_excel(writer)
     writer.save()
